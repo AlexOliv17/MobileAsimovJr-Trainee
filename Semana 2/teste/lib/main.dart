@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
         colorScheme:
-            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 1, 4, 196)),
+            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 9, 49, 230)),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Simulador de Par ou Impar'),
@@ -135,7 +135,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.swipe_up),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
