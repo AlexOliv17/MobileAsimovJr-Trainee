@@ -1,17 +1,18 @@
+import 'dart:io';
 import 'CaixaEletronico.dart';
 import 'Usuario.dart';
-import 'dart:io';
 
 void main() {
-  Usuario usuario = Usuario('João', 1000.0, 20, '123.456.789-00');
-  CaixaEletronico caixaEletronico = CaixaEletronico(usuario);
+  CaixaEletronico caixaEletronico = CaixaEletronico();
 
   while (true) {
-    caixaEletronico.mostrarMenu();
-    var escolha = int.parse(stdin.readLineSync()!);
-    caixaEletronico.processarEscolha(escolha);
-    if (escolha == 6) break; // Sai do loop se a escolha for sair
-    print('\nPressione "Enter" para continuar a opreção...');
-    stdin.readLineSync();
+    caixaEletronico.mostrarMenuPrincipal();
+    print('Escolha uma opção:');
+    int escolha = int.parse(stdin.readLineSync()!);
+    caixaEletronico.processarEscolhaPrincipal(escolha);
+    if (escolha == 3) break; // Sai do loop se a escolha for sair
+
+    print('Pressione Enter para continuar...');
+    stdin.readLineSync(); // Espera o usuário pressionar Enter para continuar
   }
 }

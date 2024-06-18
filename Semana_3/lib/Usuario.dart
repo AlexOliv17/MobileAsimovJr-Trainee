@@ -1,58 +1,28 @@
-import 'dart:io';
-
 class Usuario {
   String nome;
-  int idade;
   String cpf;
+  String idade;
   double saldo;
 
-  Usuario(this.nome, this.saldo, this.idade, this.cpf);
+  Usuario(this.nome, this.cpf, this.idade, this.saldo);
 
-  void depositar(double valor) {
-    saldo += valor;
-    print('Depósito de R\$ $valor realizado com sucesso.');
-    print('Seu saldo atual é de: R\$ $saldo');
+  void depositar(double quantia) {
+    saldo += quantia;
+    print('Depósito de R\$ $quantia realizado com sucesso. ');
+    print("Saldo atual: R\$ $saldo");
   }
 
-  void sacar(double valor) {
-    if (valor <= saldo) {
-      saldo -= valor;
-      print('Saque de R\$ $valor realizado com sucesso.');
-      print('Seu saldo atual é de: R\$ $saldo');
+  void sacar(double quantia) {
+    if (quantia <= saldo) {
+      saldo -= quantia;
+      print('Saque de R\$ $quantia realizado com sucesso.');
+      print("Saldo atual: R\$ $saldo");
     } else {
-      print('Saldo insuficiente para realizar o saque.\n');
+      print('Saldo insuficiente para saque.');
     }
   }
 
   void verificarSaldo() {
-    if (saldo > 0) {
-      print('Seu saldo bancário é: R\$ $saldo\n');
-    } else if (saldo == 0 || saldo < 0) {
-      print('Seu saldo bancário é: R\$ 0.0 ou está negativo!\n');
-    }
+    print('Saldo atual: R\$ $saldo');
   }
-
-  void dadosUsuario() {
-    print('Nome: $nome');
-    print('Idade: $idade');
-    print('Cpf: $cpf');
-  }
-}
-
-void cadastroUsuario() {
-  print('Digite o nome do usuário:');
-  var nome = stdin.readLineSync()!;
-  print('Digite a idade do usuário:');
-  var idade = int.parse(stdin.readLineSync()!);
-  print('Digite o CPF do usuário:');
-  var cpf = stdin.readLineSync()!;
-  print('Digite o saldo inicial do usuário:');
-  var saldo = double.parse(stdin.readLineSync()!);
-
-  Usuario usuario = Usuario(nome, saldo, idade, cpf);
-  print('Usuário cadastrado com sucesso!\n');
-  print('Nome: ${usuario.nome}');
-  print('Idade: ${usuario.idade}');
-  print('Cpf: ${usuario.cpf}');
-  print('Saldo: R\$ ${usuario.saldo}');
 }
