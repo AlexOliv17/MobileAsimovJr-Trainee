@@ -1,3 +1,5 @@
+import 'CaixaEletronico.dart';
+
 class Usuario {
   String nome;
   String cpf;
