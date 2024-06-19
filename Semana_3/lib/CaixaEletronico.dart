@@ -7,25 +7,31 @@ class CaixaEletronico {
   Usuario? usuarioAtual;
 
   void mostrarMenuPrincipal() {
-    print('Bem-vindo ao Sistema de Caixa Eletrônico');
+    print('\n');
+    print('   BEM-VINDO AO BOXMOV!!!');
+    print('Seu caixa eletrônico pessoal');
+    print('\n');
+    print('Escolha sua operação:');
     print('1. Gerenciar Usuários');
     print('2. Usar Caixa Eletrônico');
     print('3. Sair');
   }
 
   void mostrarMenuUsuarios() {
-    print('Menu de Usuários');
-    print('1. Criar Novo Usuário');
-    print('2. Selecionar Usuário Existente');
-    print('3. Voltar ao Menu Principal');
+    print('-----------Menu de Usuários-----------');
+    print('1. Criar Novo Usuário.');
+    print('2. Selecione um Usuário.');
+    print('3. Voltar ao menu.');
   }
 
   void mostrarMenuCaixa() {
-    print('Bem-vindo ao Caixa Eletrônico');
+    String nomeUsuario = usuarioAtual!.nome;
+    print('Olá $nomeUsuario, esse é seu BoxMov!');
+    print('faça sua operação:');
     print('1. Depositar');
     print('2. Sacar');
     print('3. Ver Saldo');
-    print('4. Sair');
+    print('4. Voltar ao menu.');
   }
 
   void processarEscolhaPrincipal(int escolha) {
@@ -38,7 +44,7 @@ class CaixaEletronico {
           usarCaixaEletronico();
         } else {
           print(
-              'Nenhum usuário selecionado. Por favor, selecione um usuário primeiro.');
+              'Nenhum usuário selecionado, faça cadastro no Menu de Usuários ou selecione um usuário.');
         }
         break;
       case 3:
@@ -90,24 +96,18 @@ class CaixaEletronico {
   void gerenciarUsuarios() {
     while (true) {
       mostrarMenuUsuarios();
-      print('Escolha uma opção:');
       int escolha = int.parse(stdin.readLineSync()!);
       processarEscolhaUsuario(escolha);
       if (escolha == 3) break;
-      print('Pressione Enter para continuar...');
-      stdin.readLineSync(); // Espera o usuário pressionar Enter para continuar
     }
   }
 
   void usarCaixaEletronico() {
     while (true) {
       mostrarMenuCaixa();
-      print('Escolha uma opção:');
       int escolha = int.parse(stdin.readLineSync()!);
       processarEscolhaCaixa(escolha);
       if (escolha == 4) break;
-      print('Pressione Enter para continuar...');
-      stdin.readLineSync(); // Espera o usuário pressionar Enter para continuar
     }
   }
 
@@ -128,12 +128,13 @@ class CaixaEletronico {
     double saldo = double.parse(saldoInicial);
 
     usuarios.add(Usuario(nome, cpf, idade, saldo));
-    print('Usuário $nome criado com sucesso.');
+    print('Usuário $nome criado com sucesso.\n');
   }
 
   void selecionarUsuario() {
     if (usuarios.isEmpty) {
-      print('Nenhum usuário disponível. Crie um usuário primeiro.');
+      print(
+          'Nenhum usuário disponível, faça cadastro no Menu de Usuários ou selecione um usuário.');
       return;
     }
 
